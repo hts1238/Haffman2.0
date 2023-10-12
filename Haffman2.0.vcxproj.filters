@@ -25,6 +25,9 @@
     <ClInclude Include="headers\zip.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="headers\comparer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="sources\original.jpg">

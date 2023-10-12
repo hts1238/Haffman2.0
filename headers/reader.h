@@ -22,6 +22,11 @@ private:
 	}
 
 public:
+	FileReader() {
+		_file_name = nullptr;
+		_file = nullptr;
+	}
+
 	FileReader(const char* file_name) {
 		_file_name = file_name;
 		_file = fopen(file_name, "rb");

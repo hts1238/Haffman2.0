@@ -1,6 +1,7 @@
 #include <iostream>
 #include "headers/zip.h"
 #include "headers/unzip.h"
+#include "headers/comparer.h"
 
 int main() {
 	const char* original_filename = "sources/original.txt";
@@ -10,5 +11,12 @@ int main() {
 	zip(original_filename, ziped_filename);
 	unzip(ziped_filename, unziped_filename);
 
-	std::cout << "DONE!" << std::endl;
+	Comparer comparer(original_filename, ziped_filename, unziped_filename);
+
+	if (comparer.isEqualOriginalAndUnziped()) {
+		std::cout << "DONE!" << std::endl;
+	}
+	else {
+		std::cout << "Files different" << std::endl;
+	}
 }

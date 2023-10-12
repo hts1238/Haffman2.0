@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="headers\comparer.h" />
     <ClInclude Include="headers\models.h" />
     <ClInclude Include="headers\reader.h" />
     <ClInclude Include="headers\unzip.h" />
