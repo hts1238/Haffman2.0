@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{65eca9c4-267e-4a7f-b0f1-198d95d7661e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\models.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\reader.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\unzip.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\writer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\zip.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="sources\original.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="sources\unziped.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="sources\ziped.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="sources\unziped.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="sources\test.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="sources\original.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+</Project>
