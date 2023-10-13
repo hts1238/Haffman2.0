@@ -19,4 +19,6 @@ int main() {
 	else {
 		std::cout << "Files different" << std::endl;
 	}
+
+	std::cout << "\nStatistics:" << comparer.getStatisticInfo() << std::endl;
 }

@@ -147,6 +147,9 @@
     <Text Include="sources\unziped.txt" />
     <Text Include="sources\ziped.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -18,66 +18,9 @@ typedef unsigned char uchar;
 typedef unsigned short ushort;
 typedef unsigned int uint;
 
-//void read_short(FILE* inf, short& n) {
-//    uchar ch;
-//    fscanf(inf, "%c", &ch);
-//    n = ch;
-//    fscanf(inf, "%c", &ch);
-//    n += (short)ch << 8;
-//}
-//
-//void read_ushort(FILE* inf, ushort& n) {
-//    uchar ch;
-//    fscanf(inf, "%c", &ch);
-//    n = ch;
-//    fscanf(inf, "%c", &ch);
-//    n += (ushort)ch << 8;
-//}
-
 void unzip(const char* ziped_filename, const char* unziped_filename) {
-    // Открываем файлы в побайтовом режиме
-    //FILE* inf = fopen(ziped_filename, "rb");
-    //FILE* outf = fopen(unziped_filename, "wb");
-
     FileReader reader(ziped_filename);
     FileWriter writer(unziped_filename);
-
-    // Считываем размер дерева (2 байта)
-    //ushort n;
-    //read_ushort(inf, n);
-
-    //cout << "Tree size = " << n << endl;
-
-    // Создаем и считываем дерево
-    //vector<Tree> tree(TREE_SIZE);
-    //for (ushort i = 0; i < n; ++i) {
-    //    uchar ch;
-    //    fscanf(inf, "%c", &ch);
-    //    short left, right;
-    //    read_short(inf, left);
-    //    read_short(inf, right);
-
-    //    tree[i].ch = ch;
-    //    tree[i].left = left;
-    //    tree[i].right = right;
-
-    //    if (left >= 0 && right >= 0) {
-    //        tree[left].parent = i;
-    //        tree[right].parent = i;
-    //    }
-
-    //    // Индексные ссылки могут переполнять тип char
-    //    // Для этого, если встретили переполнение, исправляем 
-    //    /*if (tree[i].left < -1) {
-    //        tree[i].left += 256;
-    //    }
-    //    if (tree[i].right < -1) {
-    //        tree[i].right += 256;
-    //    }
-    //    if (tree[i].parent < -1) {
-    //        tree[i].parent += 256;
-    //    }*/
-    //}
 
     std::vector<Tree> tree(TREE_SIZE);
     std::stack<ushort> st;
@@ -143,4 +86,7 @@ void unzip(const char* ziped_filename, const char* unziped_filename) {
             cur = 0;
         }
     }
+
+    reader.~FileReader();
+    writer.~FileWriter();
 }

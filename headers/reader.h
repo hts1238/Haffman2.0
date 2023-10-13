@@ -12,7 +12,7 @@ private:
 
 	bool _update_buffer() {
 		if (_buffer_size <= 0) {
-			if (fscanf(_file, "%c", &_buffer) == -1) {
+			if (fscanf(_file, "%c", &_buffer) <= 0) {
 				return false;
 			}
 			_buffer_size = 8;
@@ -39,6 +39,9 @@ public:
 	void reopen_file() {
 		fclose(_file);
 		_file = fopen(_file_name, "rb");
+
+		_buffer = 0;
+		_buffer_size = 0;
 	}
 
 	bool read_bites(unsigned char& out, unsigned char bites = 1) {

@@ -19,10 +19,6 @@ typedef unsigned short ushort;
 typedef unsigned int uint;
 
 void zip(const char* original_filename, const char* ziped_filename) {
-    //// Открываем файлы в побайтовом режиме
-    //FILE* inf = fopen(original_filename, "rb");
-    //FILE* outf = fopen(ziped_filename, "wb");
-
     FileReader reader(original_filename);
     FileWriter writer(ziped_filename);
 	
@@ -34,10 +30,6 @@ void zip(const char* original_filename, const char* ziped_filename) {
         ++numc[ch];
     }
     
-    //// Если встретили в исходном файле символ конца файла, то это плохо
-    //if (numc[END_OF_FILE] > 0) {
-    //    throw new exception("EOF symbol was in original file. Can't do anything...");
-    //}
     // Добавляем символ конца файла
     numc[END_OF_FILE] = 1;
 
@@ -58,8 +50,6 @@ void zip(const char* original_filename, const char* ziped_filename) {
             ++l;
         }
     }
-
-    //std::cout << "Symbols count: " << l << std::endl;
 
     ushort curl = l; // Текущее кол-во элементов в списке damb
     ushort curi = l; // Текущее кол-во узлов в дереве
@@ -140,20 +130,6 @@ void zip(const char* original_filename, const char* ziped_filename) {
         }
     }
 
-    //// Выводим дерево в файл
-    //ushort a = curi; // Кол-во узлов дерева (2 байта)
-    //fwrite(&a, sizeof(a), 1, outf);
-    //cout << "Tree size = " << a << endl;
-    //for (ushort i = 0; i < curi; ++i) {
-    //    uchar a1 = tree[i].ch;
-    //    short a2 = tree[i].left;
-    //    short a3 = tree[i].right;
-
-    //    fwrite(&a1, sizeof(a1), 1, outf);
-    //    fwrite(&a2, sizeof(a2), 1, outf);
-    //    fwrite(&a3, sizeof(a3), 1, outf);
-    //}
-
     // Выводим дерево в файл в порядке обхода в глубину
     // 0 - узел без символа, 1 - узел с символом
     // Далее, если узел с символом,
@@ -195,19 +171,6 @@ void zip(const char* original_filename, const char* ziped_filename) {
         ushort len = codes[ch].length;
 
         writer.write_bites(code, len, true);
-
-        //// Перебираем биты кода символа и записываем по одному биту в буфер
-        //for (int i = 0; i < len; ++i) {
-        //    buffer <<= 1;
-        //    buffer += code % 2;
-        //    code >>= 1;
-        //    ++k;
-        //    // Если буфер заполнился, то выводим его (целый байт)
-        //    if (k == 8) {
-        //        fwrite(&buffer, sizeof(buffer), 1, outf);
-        //        k = 0;
-        //    }
-        //}
     }
 
     // Добавляем символ конца файла
@@ -216,22 +179,6 @@ void zip(const char* original_filename, const char* ziped_filename) {
 
     writer.write_bites(code, len, true);
 
-    //// Аналогично работаем с буфером
-    //for (int i = 0; i < len; ++i) {
-    //    buffer <<= 1;
-    //    buffer += code % 2;
-    //    code >>= 1;
-    //    ++k;
-    //    if (k == 8) {
-    //        fwrite(&buffer, sizeof(buffer), 1, outf);
-    //        k = 0;
-    //    }
-    //}
-
-    // Если после всех выводов в буфере еще что-то осталось,
-    //// двигаем его содержимое в начало байта и выводим
-    //if (k > 0) {
-    //    buffer <<= 8 - k;
-    //    fwrite(&buffer, sizeof(buffer), 1, outf);
-    //}
+    reader.~FileReader();
+    writer.~FileWriter();
 }
